@@ -1,0 +1,6 @@
+/* Header */
+header {
+  height: 250px;
+  background: url('../../assets/img/cinema.png') rgba(166, 39, 50, 0.9) no-repeat center center !important;
+  background-size: cover;
+}

@@ -1,0 +1,36 @@
+/* Geral  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: url('../../assets/img/infra-cine.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+/* Container padrão */
+.container-default {
+  max-width: 1400px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0 10px;
+  margin: 0 auto;
+}

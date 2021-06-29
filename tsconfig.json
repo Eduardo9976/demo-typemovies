@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "es5" /* Qual é a versão que vai rodar o código: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
+
+    "module": "CommonJS" /* Sistema de importação de módulos */,
+
+    "lib": [
+      "ESNext",
+      "DOM"
+    ] /* Especificar os recursos que vou usar no projeto */,
+
+    "allowJs": true /* Para migrar um projeto para TS apenas nomeando a extensão para .ts */,
+
+    "sourceMap": true /* exibir linha exata do erro */,
+
+    "outDir": "./assets/js" /* Pasta de saída */,
+
+    "rootDir": "./" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+
+    "removeComments": true /* Remover os comentários do código */,
+
+    "noEmitOnError": true /* Não compilar o arquivo se existir erros */,
+
+    "strict": true /* vai verificar os erros(TS) enquanto está escrevendo o código */,
+
+    "esModuleInterop": true /* Trabalhar com módulos(Importação)*/,
+
+    /* Experimental Options */
+    "experimentalDecorators": true /* Habilitar decorators */,
+    "emitDecoratorMetadata": true /* Suporte para decorators */,
+
+    /* Advanced Options */
+    "skipLibCheck": true /* Não verificar se existe arquivos duplicados de bibliotecas */,
+    "forceConsistentCasingInFileNames": true /* verificar consistência nos nomes dos arquivos(diferenciação de maiúsculas e minúsculas) */
+  },
+  "include": ["./src"] //pasta de entrada
+}

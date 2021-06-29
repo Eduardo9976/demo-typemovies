@@ -1,0 +1,25 @@
+.arrow_up {
+  position: fixed;
+  z-index: 2;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.arrow_up.in {
+  transition: visibility 0.1s linear, opacity 0.3s linear;
+  opacity: 1;
+  visibility: visible;
+}
+
+.arrow_up:hover {
+  transform: scale(1.1);
+}
+
+.arrow_up img {
+  width: 28px;
+  height: 28px;
+}
