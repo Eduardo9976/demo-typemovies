@@ -1,9 +1,11 @@
 export default class HandleAddMovies {
+  private readonly loading: HTMLDivElement | null
   private readonly container: HTMLElement | null
   private readonly genres: number
   private list: Array<any>
 
   constructor(container: string, genres: number) {
+    this.loading = document.querySelector('.loading')
     this.container = document.querySelector(container)
     this.genres = genres
     this.list = []
@@ -11,6 +13,7 @@ export default class HandleAddMovies {
 
   private async getMovies():Promise<void> {
     // get na API
+    this.loading?.classList.add('in')
     const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=66e3df787130147acae1d50069f3587c&language=pt-BR&with_genres=${this.genres}&sort_by=popularity.desc&include_adult=false&page=1&page=2&with_watch_monetization_types=flatrate`)
     const resJSON = await response.json()
     // atribuiu a resposta para lista
@@ -38,6 +41,7 @@ export default class HandleAddMovies {
       // adicionar a LI no container UL
       this.container?.appendChild(li)
     })
+    this.loading?.classList.remove('in')
   }
 
   init():void {

@@ -1,0 +1,34 @@
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 4;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.in {
+  display: flex;
+}
+
+.load {
+  border: 4px solid #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border-left: transparent;
+  border-top: transparent;
+  animation: anime infinite 1s linear;
+}
+@keyframes anime {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}

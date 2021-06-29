@@ -3,6 +3,7 @@ interface PublicMethods {
 }
 
 export default class HandleClick implements PublicMethods {
+  private readonly loading: HTMLDivElement | null
   private movies: Element[] | null
   private containerDetailsFull: HTMLDivElement | null
   private buttonCloseDetails: HTMLSpanElement | null
@@ -17,6 +18,7 @@ export default class HandleClick implements PublicMethods {
   private detailsTrailer: HTMLAnchorElement | null
 
   constructor(list: string, containerDetailsFull: string, buttonCloseDetails: string) {
+    this.loading = document.querySelector('.loading')
     this.movies = Array.from(document.querySelectorAll(list))
     this.containerDetailsFull = document.querySelector(containerDetailsFull)
     this.buttonCloseDetails = document.querySelector(buttonCloseDetails)
@@ -40,6 +42,7 @@ export default class HandleClick implements PublicMethods {
       movie.addEventListener('click', () => {
         // ao ser clicado pegar o id do filme
         const ID = movie.getAttribute('id')
+        this.loading?.classList.add('in')
         //fazer um get nas informações do filme get é o método abaixo
         if (ID) this.getInfosForDetails(ID)
       })
@@ -79,7 +82,8 @@ export default class HandleClick implements PublicMethods {
     if (this.detailsSinopse) this.detailsSinopse.innerText = resJSON.overview
     //setando o id no link para assistir o trailer
     if (this.detailsTrailer) this.detailsTrailer.setAttribute('id', `${resJSON.videos.results.length > 0 ? resJSON.videos.results[0].key : '' }`)
-    // exibir o container depois que tiver todas as informações
+    this.loading?.classList.remove('in')
+    // exibir o container depois que tiver todas as informações 
     if (this.containerDetailsFull) this.containerDetailsFull.style.display = 'flex'
   }
 

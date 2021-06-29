@@ -48,21 +48,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var HandleAddMovies = (function () {
     function HandleAddMovies(container, genres) {
+        this.loading = document.querySelector('.loading');
         this.container = document.querySelector(container);
         this.genres = genres;
         this.list = [];
     }
     HandleAddMovies.prototype.getMovies = function () {
+        var _a;
         return __awaiter(this, void 0, void 0, function () {
             var response, resJSON;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4, fetch("https://api.themoviedb.org/3/discover/movie?api_key=66e3df787130147acae1d50069f3587c&language=pt-BR&with_genres=" + this.genres + "&sort_by=popularity.desc&include_adult=false&page=1&page=2&with_watch_monetization_types=flatrate")];
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        (_a = this.loading) === null || _a === void 0 ? void 0 : _a.classList.add('in');
+                        return [4, fetch("https://api.themoviedb.org/3/discover/movie?api_key=66e3df787130147acae1d50069f3587c&language=pt-BR&with_genres=" + this.genres + "&sort_by=popularity.desc&include_adult=false&page=1&page=2&with_watch_monetization_types=flatrate")];
                     case 1:
-                        response = _a.sent();
+                        response = _b.sent();
                         return [4, response.json()];
                     case 2:
-                        resJSON = _a.sent();
+                        resJSON = _b.sent();
                         this.list = resJSON.results;
                         this.addList();
                         return [2];
@@ -72,6 +76,7 @@ var HandleAddMovies = (function () {
     };
     HandleAddMovies.prototype.addList = function () {
         var _this = this;
+        var _a;
         this.list.forEach(function (movie) {
             var _a;
             var li = document.createElement('li');
@@ -86,6 +91,7 @@ var HandleAddMovies = (function () {
             li.appendChild(p);
             (_a = _this.container) === null || _a === void 0 ? void 0 : _a.appendChild(li);
         });
+        (_a = this.loading) === null || _a === void 0 ? void 0 : _a.classList.remove('in');
     };
     HandleAddMovies.prototype.init = function () {
         if (this.container) {
@@ -189,6 +195,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var HandleClick = (function () {
     function HandleClick(list, containerDetailsFull, buttonCloseDetails) {
+        this.loading = document.querySelector('.loading');
         this.movies = Array.from(document.querySelectorAll(list));
         this.containerDetailsFull = document.querySelector(containerDetailsFull);
         this.buttonCloseDetails = document.querySelector(buttonCloseDetails);
@@ -207,7 +214,9 @@ var HandleClick = (function () {
         var _a;
         (_a = this.movies) === null || _a === void 0 ? void 0 : _a.forEach(function (movie) {
             movie.addEventListener('click', function () {
+                var _a;
                 var ID = movie.getAttribute('id');
+                (_a = _this.loading) === null || _a === void 0 ? void 0 : _a.classList.add('in');
                 if (ID)
                     _this.getInfosForDetails(ID);
             });
@@ -222,16 +231,17 @@ var HandleClick = (function () {
         });
     };
     HandleClick.prototype.getInfosForDetails = function (ID) {
+        var _a;
         return __awaiter(this, void 0, void 0, function () {
             var response, resJSON, text_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0: return [4, fetch("https://api.themoviedb.org/3/movie/" + ID + "?api_key=66e3df787130147acae1d50069f3587c&append_to_response=videos&language=pt-BR")];
                     case 1:
-                        response = _a.sent();
+                        response = _b.sent();
                         return [4, response.json()];
                     case 2:
-                        resJSON = _a.sent();
+                        resJSON = _b.sent();
                         if (this.detailsContainer) {
                             this.detailsContainer.style.background = "url('https://image.tmdb.org/t/p/original" + (resJSON.belongs_to_collection ? resJSON.belongs_to_collection.backdrop_path : resJSON.backdrop_path) + "')";
                         }
@@ -252,6 +262,7 @@ var HandleClick = (function () {
                             this.detailsSinopse.innerText = resJSON.overview;
                         if (this.detailsTrailer)
                             this.detailsTrailer.setAttribute('id', "" + (resJSON.videos.results.length > 0 ? resJSON.videos.results[0].key : ''));
+                        (_a = this.loading) === null || _a === void 0 ? void 0 : _a.classList.remove('in');
                         if (this.containerDetailsFull)
                             this.containerDetailsFull.style.display = 'flex';
                         return [2];
@@ -284,6 +295,7 @@ exports.default = HandleClick;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var HandleIframe = (function () {
     function HandleIframe(buttonOpen, buttonClose, containerWrapperFull) {
+        this.loading = document.querySelector('.loading');
         this.buttonAnchorOpen = document.querySelector(buttonOpen);
         this.buttonClose = document.querySelector(buttonClose);
         this.wrapperFull = document.querySelector(containerWrapperFull);
@@ -293,9 +305,11 @@ var HandleIframe = (function () {
         var _this = this;
         var _a;
         (_a = this.buttonAnchorOpen) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () {
-            var _a, _b;
-            var ID = (_a = _this.buttonAnchorOpen) === null || _a === void 0 ? void 0 : _a.getAttribute('id');
-            (_b = _this.iframe) === null || _b === void 0 ? void 0 : _b.setAttribute('src', "//www.youtube.com/embed/" + (ID ? ID : 'xkvcuMjZwik') + "?autoplay=1&mute=1&origin=http://localhost&hl=pt&modestbranding=1&fs=1&autohide=1");
+            var _a, _b, _c, _d;
+            (_a = _this.loading) === null || _a === void 0 ? void 0 : _a.classList.add('in');
+            var ID = (_b = _this.buttonAnchorOpen) === null || _b === void 0 ? void 0 : _b.getAttribute('id');
+            (_c = _this.iframe) === null || _c === void 0 ? void 0 : _c.setAttribute('src', "//www.youtube.com/embed/" + (ID ? ID : 'xkvcuMjZwik') + "?autoplay=1&mute=1&origin=http://localhost&hl=pt&modestbranding=1&fs=1&autohide=1");
+            (_d = _this.loading) === null || _d === void 0 ? void 0 : _d.classList.remove('in');
             if (_this.wrapperFull)
                 _this.wrapperFull.style.display = 'flex';
         });
