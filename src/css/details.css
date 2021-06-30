@@ -48,6 +48,10 @@
   margin: 0 auto;
 }
 
+.details-poster {
+  min-height: 364px;
+}
+
 .details-contents h2 {
   padding: 20px 0 30px 0;
   text-align: center;
