@@ -116,6 +116,10 @@
     max-width: 120px;
   }
 
+  .details-poster {
+    min-height: auto;
+  }
+
   .details-contents h2 {
     font-size: 18px;
   }
