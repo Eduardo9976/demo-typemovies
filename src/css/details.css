@@ -13,10 +13,11 @@
   display: none;
 }
 
+
 .details-container {
   max-width: 800px;
   width: 100%;
-  min-height: 700px;
+  /* min-height: 700px; */
   background: no-repeat center center;
   background-size: cover !important;
   border-radius: 8px;
@@ -49,7 +50,13 @@
 }
 
 .details-poster {
-  min-height: 364px;
+  max-height: 364px;
+}
+
+@media (max-height: 720px) {
+  .details-poster {
+    display: none;
+  }
 }
 
 .details-contents h2 {
