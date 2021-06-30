@@ -61,7 +61,7 @@ export default class HandleClick implements PublicMethods {
     const resJSON = await response.json()
     if (this.detailsContainer) {
       //setando o background do container com a foto do filme
-      this.detailsContainer.style.background = `url('https://image.tmdb.org/t/p/original${resJSON.belongs_to_collection ? resJSON.belongs_to_collection.backdrop_path : resJSON.backdrop_path}')`
+      this.detailsContainer.style.background = `url('https://image.tmdb.org/t/p/original${resJSON.belongs_to_collection ? resJSON.belongs_to_collection.backdrop_path : resJSON.backdrop_path}') no-repeat center center`
     }
 
     //setando o título da pagina com o titulo do filme
